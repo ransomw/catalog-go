@@ -1,0 +1,27 @@
+{{template "base" .}}
+{{define "content"}}
+{{template "header" .}}
+{{with .Data}}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>{{ .Item.Title }}</h3>
+      {{ if .HasImg }}
+      <!-- add a query string to prevent caching -->
+      <img src="/catalog/item/{{ .Item.ID }}/img?rand={{ .RandQ }}">
+      {{ end }}
+      <p>Description: {{ .Item.Description }}</p>
+      {{ if $.LoggedIn }}
+      <a href="/catalog/{{ .Item.Title }}/edit">
+        Edit
+      </a>
+      |
+      <a href="/catalog/{{ .Item.Title }}/delete">
+        Delete
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</div>
+{{end}}
+{{end}}

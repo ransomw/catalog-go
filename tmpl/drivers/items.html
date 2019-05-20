@@ -1,0 +1,15 @@
+{{template "lists" .}}
+{{define "items"}}
+{{with .Data}}
+<h3>{{ .Category.Name }} Items ({{ .Items |len }} items)</h3>
+<ul>
+  {{range .Items}}
+  <li>
+    <a href="/catalog/{{ .Category.Name }}/{{ .Title }}">
+      {{ .Title }}
+    </a>
+  </li>
+  {{end}}
+</ul>
+{{end}}
+{{end}}

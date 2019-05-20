@@ -1,0 +1,23 @@
+{{template "lists" .}}
+{{define "items"}}
+{{ if .LoggedIn }}
+<a class="body-bold" href="/catalog/item/new">
+  Add item
+</a>
+{{ end }}
+{{with .Data}}
+<h3>Latest Items</h3>
+<ul>
+  {{range .Items}}
+  <li>
+    <a href="/catalog/{{ .Category.Name }}/{{ .Title }}">
+      {{ .Title }}
+    </a>
+    <span>
+      ({{ .Category.Name }})
+    </span>
+  </li>
+  {{end}}
+</ul>
+{{end}}
+{{end}}

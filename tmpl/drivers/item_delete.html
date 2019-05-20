@@ -1,0 +1,21 @@
+{{template "base" .}}
+{{define "content"}}
+{{template "header" .}}
+{{with .Data}}
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <h3>Delete item</h3>
+      <p>
+        Are you sure you want to delete?
+      </p>
+      <form method="post">
+        <!-- todo: csrf -->
+        <button type="submit" class="btn">Submit</button>
+      </form>
+    </div>
+    <div class="col-md-9"></div>
+  </div>
+</div>
+{{end}}
+{{end}}

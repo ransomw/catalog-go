@@ -1,0 +1,17 @@
+{{template "base" .}}
+{{define "content"}}
+{{template "header" .}}
+{{with .Data}}
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <h3>Error</h3>
+      <p>
+        {{ .Msg }}
+      </p>
+    </div>
+    <div class="col-md-9"></div>
+  </div>
+</div>
+{{end}}
+{{end}}

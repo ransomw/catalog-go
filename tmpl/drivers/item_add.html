@@ -1,0 +1,20 @@
+{{template "base" .}}
+{{define "content"}}
+{{template "header" .}}
+{{with .Data}}
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <h3>Add item</h3>
+      {{template "item_form" .}}
+    </div>
+    <div class="col-md-9"></div>
+  </div>
+</div>
+{{end}}
+{{end}}
+{{define "scripts"}}
+<script
+   src="/assets/js/item_form_validate.js">
+</script>
+{{end}}

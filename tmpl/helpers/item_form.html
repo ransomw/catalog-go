@@ -1,0 +1,47 @@
+{{define "item_form"}}
+<div class="alert alert-danger" role="alert" hidden="true">
+  Errors with some values
+</div>
+<form method="post" enctype="multipart/form-data">
+  <!-- todo: csrf -->
+
+  <div class="form-group">
+    <label for="title" class="control-label">Title</label>
+    <input type="text" name="title" id="title"
+           class="form-control"
+           {{ if .HasItem }}
+           value="{{ .Item.Title }}"
+           {{ end }}
+           placeholder="Enter title">
+  </div>
+  <div class="form-group">
+    <label for="description" class="control-label">Description</label>
+    <input type="text" name="description" id="description"
+           class="form-control"
+           {{ if .HasItem }}
+           value="{{ .Item.Description }}"
+           {{ end }}
+           placeholder="Enter description">
+  </div>
+  <div class="form-group">
+    <label for="category" class="control-label">Category</label>
+    <select name="category" id="category"
+            class="form-control">
+      {{ range .Categories }}
+      <option value="{{ .ID }}"
+              {{ if eq .ID $.Item.CategoryID | and $.HasItem }}
+              selected="true"
+              {{ end }}
+              >
+        {{ .Name }}
+      </option>
+      {{ end }}
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="picture">Picture</label>
+    <input type="file" name="picture" id="picture">
+  </div>
+  <button class="btn">Submit</button>
+</form>
+{{end}}

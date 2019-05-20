@@ -1,0 +1,28 @@
+{{define "lists"}}
+{{template "base" .}}
+{{end}}
+{{define "content"}}
+{{template "header" .}}
+<div class="container">
+  <div class="row row-eq-height">
+    {{with .Data}}
+    <div class="col-md-3">
+      <h3>Categories</h3>
+      {{range .Categories}}
+      <li>
+        <!-- todo: reverse routing -->
+        <a href="/catalog/{{ .Name }}/items">
+          {{ .Name }}
+        </a>
+      </li>
+      {{end}}
+    </div>
+    {{end}}
+    <div class="col-md-9">
+      {{block "items" .}}{{end}}
+    </div>
+  </div>
+</div>
+{{end}}
+
+
